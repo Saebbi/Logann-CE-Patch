@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoWolvShotgun</defName>
+      <label>Wolverine Shotgun</label>
+      <parent>AmmoShotguns</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberShotgun</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_WolvShotgun</defName>
+    <label>Wolverine Shotgun</label>
+    <ammoTypes>
+      <Ammo_WolvShotgun_Buck>Bullet_WolvShotgun_Buck</Ammo_WolvShotgun_Buck>
+      <Ammo_WolvShotgun_Bird>Bullet_WolvShotgun_Bird</Ammo_WolvShotgun_Bird>
+      <Ammo_WolvShotgun_Slug>Bullet_WolvShotgun_Slug</Ammo_WolvShotgun_Slug>
+      <Ammo_WolvShotgun_Beanbag>Bullet_WolvShotgun_Beanbag</Ammo_WolvShotgun_Beanbag>
+      <Ammo_WolvShotgun_ElectroSlug>Bullet_WolvShotgun_ElectroSlug</Ammo_WolvShotgun_ElectroSlug>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Name="WolvShotgunBase" ParentName="SmallAmmoBase" Abstract="True">
+    <description>Extremely common shotgun caliber used in almost every application, from hunting over riot control to military firearms.</description>
+    <statBases>
+	  <Mass>0.05</Mass>
+	  <Bulk>0.07</Bulk>
+    </statBases>
+	<tradeTags>
+	  <li>CE_AutoEnableTrade</li>
+	  <li>CE_AutoEnableCrafting</li>
+	</tradeTags>
+    <thingCategories>
+      <li>AmmoWolvShotgun</li>
+    </thingCategories>
+    <stackLimit>350</stackLimit>
+  </ThingDef>
+
+  <ThingDef ParentName="WolvShotgunBase">
+    <defName>Ammo_WolvShotgun_Buck</defName>
+    <label>Wolverine Shotgun shell (Buck)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Shotgun/Shot</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.15</MarketValue>
+    </statBases>
+    <ammoClass>BuckShot</ammoClass>
+    <cookOffProjectile>Bullet_WolvShotgun_Buck</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef ParentName="WolvShotgunBase">
+    <defName>Ammo_WolvShotgun_Bird</defName>
+    <label>Wolverine Shotgun shell (Bird)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Shotgun/Shot</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.15</MarketValue>
+    </statBases>
+    <ammoClass>BirdShot</ammoClass>
+    <cookOffProjectile>Bullet_WolvShotgun_Bird</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef ParentName="WolvShotgunBase">
+    <defName>Ammo_WolvShotgun_Slug</defName>
+    <label>Wolverine Shotgun shell (Slug)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Shotgun/Slug</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+	  <Mass>0.1</Mass>
+      <MarketValue>0.15</MarketValue>
+    </statBases>
+    <ammoClass>Slug</ammoClass>
+    <cookOffProjectile>Bullet_WolvShotgun_Slug</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef ParentName="WolvShotgunBase">
+    <defName>Ammo_WolvShotgun_Beanbag</defName>
+    <label>Wolverine Shotgun shell (Bean)</label>
+	<canBeSpawningInventory>false</canBeSpawningInventory>
+    <graphicData>
+      <texPath>Things/Ammo/Shotgun/Beanbag</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.18</MarketValue>
+    </statBases>
+    <ammoClass>Beanbag</ammoClass>
+    <cookOffProjectile>Bullet_WolvShotgun_Beanbag</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef ParentName="WolvShotgunBase">
+    <defName>Ammo_WolvShotgun_ElectroSlug</defName>
+    <label>Wolverine Shotgun shell (EMP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Shotgun/EMP</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.43</MarketValue>
+    </statBases>
+    <ammoClass>ElectroSlug</ammoClass>
+    <cookOffProjectile>Bullet_WolvShotgun_ElectroSlug</cookOffProjectile>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="BaseWolvShotgunBullet" ParentName="BaseBullet" Abstract="true">
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<speed>80</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Mote_ShotgunShell</casingMoteDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWolvShotgunBullet">
+		<defName>Bullet_WolvShotgun_Buck</defName>
+		<label>buckshot pellet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>15</damageAmountBase>
+			<pelletCount>9</pelletCount>
+			<armorPenetration>0.4</armorPenetration>
+			<spreadMult>17.8</spreadMult>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWolvShotgunBullet">
+		<defName>Bullet_WolvShotgun_Bird</defName>
+		<label>birdshot pellet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>2</damageAmountBase>
+			<pelletCount>50</pelletCount>
+			<spreadMult>71.4</spreadMult>
+			<armorPenetration>0.15</armorPenetration>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWolvShotgunBullet">
+		<defName>Bullet_WolvShotgun_Slug</defName>
+		<label>shotgun slug</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<speed>80</speed>
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetration>0.6</armorPenetration>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWolvShotgunBullet">
+		<defName>Bullet_WolvShotgun_Beanbag</defName>
+		<label>beanbag</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Beanbag</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetration>0.2</armorPenetration>
+			<spreadMult>2</spreadMult>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWolvShotgunBullet">
+		<defName>Bullet_WolvShotgun_ElectroSlug</defName>
+		<label>EMP slug</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+		</projectile>
+	</ThingDef>
+  
+	<!-- ==================== Recipes ========================== -->
+
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_WolvShotgun_Buck</defName>
+    <label>make Wolverine Shotgun (Buck) shell x200</label>
+    <description>Craft 200 Wolverine Shotgun (Buck) shells.</description>
+    <jobString>Making Wolverine Shotgun (Buck) shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>17</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12Gauge_Buck>200</Ammo_12Gauge_Buck>
+    </products>
+    <workAmount>5000</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_WolvShotgun_Bird</defName>
+    <label>make Wolverine Shotgun (Bird) shell x200</label>
+    <description>Craft 200 Wolverine Shotgun (Bird) shells.</description>
+    <jobString>Making Wolverine Shotgun (Bird) shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>17</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12Gauge_Bird>200</Ammo_12Gauge_Bird>
+    </products>
+    <workAmount>5000</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_WolvShotgun_Slug</defName>
+    <label>make Wolverine Shotgun (Slug) shell x200</label>
+    <description>Craft 200 Wolverine Shotgun (Slug) shells.</description>
+    <jobString>Making Wolverine Shotgun (Slug) shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>17</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12Gauge_Slug>200</Ammo_12Gauge_Slug>
+    </products>
+    <workAmount>4500</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_WolvShotgun_Beanbag</defName>
+    <label>make Wolverine Shotgun (Beanbag) shell x200</label>
+    <description>Craft 200 Wolverine Shotgun (Beanbag) shells.</description>
+    <jobString>Making Wolverine Shotgun (Beanbag) shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cloth</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Cloth</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12Gauge_Beanbag>200</Ammo_12Gauge_Beanbag>
+    </products>
+    <workAmount>4250</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_WolvShotgun_ElectroSlug</defName>
+    <label>make Wolverine Shotgun (EMP) shell x200</label>
+    <description>Craft 200 Wolverine Shotgun (EMP) shells.</description>
+    <jobString>Making Wolverine Shotgun (EMP) shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Component</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Component</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12Gauge_ElectroSlug>200</Ammo_12Gauge_ElectroSlug>
+    </products>
+    <workAmount>7250</workAmount>
+  </RecipeDef>
+	
+</Defs>
